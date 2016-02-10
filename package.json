@@ -1,0 +1,16 @@
+{
+  "name": "aclib",
+  "version": "1.0.0",
+  "description": "aclib 是一个对apicloud的js封装库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "moonrailgun",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-uglify": "^0.11.1"
+  }
+}
