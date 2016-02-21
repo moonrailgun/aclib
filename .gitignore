@@ -10,5 +10,6 @@
 
 /dist
 /node_modules
+/.idea
 
 /test/node_smoke_tests/lib/ensure_iterability.js
