@@ -2,7 +2,7 @@
  * Created by Chen on 2016-02-21.
  */
 
-(function(ac){
+(function(ac,window){
     ac.event = {
         BATTERY_LOW:'batterylow',
         BATTERY_STATUE:'batterystatus',
@@ -25,4 +25,4 @@
         APP_INTENT: 'appintent',
         SMART_UPDATE_FINISH: 'smartupdatefinish'
     }
-})(ac);
+})(ac, window);
