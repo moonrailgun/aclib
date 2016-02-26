@@ -24,5 +24,31 @@
         NOTICE_CLICKED: 'noticeclicked',
         APP_INTENT: 'appintent',
         SMART_UPDATE_FINISH: 'smartupdatefinish'
-    }
+    };
+
+    ac.addEventListener = function (name, extra, callback) {
+        api.addEventListener({
+            name: 'online',
+            extra: extra || {}
+        }, callback || function(ret,err){});
+    };
+
+    ac.removeEventListener = function(name){
+        api.removeEventListener({name: name});
+    };
+    
+    ac.sendEvent = function (name, extra) {
+        api.sendEvent({
+            name: name,
+            extra: extra || {}
+        });
+    };
+    
+    ac.notification = function (obj,callback) {
+        api.notification(obj, callback || function(ret,err){});
+    };
+    
+    ac.cancelNotification = function (id) {
+        api.cancelNotification({id: id});
+    };
 })(ac, window);
