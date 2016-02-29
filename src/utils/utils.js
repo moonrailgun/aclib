@@ -47,6 +47,30 @@
                 text = temp + text;
             }
             return text;
+        },
+        //复制对象
+        clone: function (obj) {
+            var o;
+            if(typeof obj == "object"){
+                if(obj === null){
+                    o = null;
+                }else{
+                    if(obj instanceof Array){
+                        o = [];
+                        for(var i = 0, len = obj.length; i < len; i++){
+                            o.push(this.clone(obj[i]));
+                        }
+                    }else{
+                        o = {};
+                        for(var k in obj){
+                            o[k] = this.clone(obj[k]);
+                        }
+                    }
+                }
+            }else{
+                o = obj;
+            }
+            return o;
         }
     }
 })(ac, window);
