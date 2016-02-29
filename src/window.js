@@ -77,4 +77,134 @@
     ac.setFrameAttr = function (frameAttr) {
         api.setFrameAttr(frameAttr);
     };
+
+    ac.bringFrameToFront = function (from, to) {
+        api.bringFrameToFront({
+            from: from,
+            to: to
+        });
+    };
+
+    ac.sendFrameToBack = function (from, to) {
+        api.sendFrameToBack({
+            from: from,
+            to: to
+        });
+    };
+
+    ac.animation = function (opts, callback) {
+        api.animation(opts, callback);
+    };
+
+    ac.openFrameGroup = function (opts, callback) {
+        api.openFrameGroup(opts, callback)
+    };
+
+    ac.closeFrameGroup = function (name) {
+        api.closeFrameGroup({name: name});
+    };
+
+    ac.setFrameGroupAttr = function (name, opts) {
+        var params = opts;
+        params.name = name;
+        api.setFrameGroupAttr(params);
+    };
+
+    ac.setFrameGroupIndex = function (name, index, extra) {
+        api.setFrameGroupIndex({
+            name: name,
+            index: index,
+            scroll: !!extra ? extra.scroll || false : false,
+            reload: !!extra ? extra.reload || false : false
+        });
+    };
+
+    ac.openPopoverWin = function (name, url, opts) {
+        var params = opts;
+        params.name = name;
+        params.url = url;
+        api.openPopoverWin(params);
+    };
+
+    ac.closePopoverWin = function () {
+        api.closePopoverWin();
+    };
+
+    ac.openSlidLayout = function (opts, callback) {
+        api.openSlidLayout(opts, callback);
+    };
+
+    ac.openSlidPane = function (type) {
+        api.openSlidPane({
+            type: type
+        });
+    };
+
+    ac.closeSlidPane = function () {
+        api.closeSlidPane();
+    };
+
+    ac.lockSlidPane = function () {
+        api.lockSlidPane();
+    };
+
+    ac.unlockSlidPane = function () {
+        api.unlockSlidPane();
+    };
+
+    ac.execScript = function (script, windowName, frameName) {
+        api.execScript({
+            script: script,
+            name: windowName,
+            frameName: frameName
+        });
+    };
+
+    ac.historyBack = function (frameName, callback) {
+        if (typeof frameName == 'function') {
+            api.historyBack({}, callback);
+        } else {
+            api.historyBack({
+                frameName: frameName
+            }, callback);
+        }
+    };
+
+    ac.historyForward = function (frameName, callback) {
+        if (typeof frameName == 'function') {
+            api.historyForward({}, callback);
+        } else {
+            api.historyForward({
+                frameName: frameName
+            }, callback);
+        }
+    };
+
+    ac.pageUp = function (top, callback) {
+        if (typeof top == 'function') {
+            api.pageUp({}, callback);
+        } else {
+            api.pageUp({
+                top: top
+            }, callback);
+        }
+    };
+
+    ac.pageDown = function (bottom, callback) {
+        if (typeof bottom == 'function') {
+            api.pageDown({}, callback);
+        } else {
+            api.pageDown({
+                bottom: bottom
+            }, callback);
+        }
+    };
+
+    ac.removeLaunchView = function (animation) {
+        api.removeLaunchView(animation || {});
+    };
+
+    ac.parseTapmode = function () {
+        api.parseTapmode();
+    };
 })(ac, window);
