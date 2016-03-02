@@ -3,7 +3,7 @@
  */
 
 (function (ac, window) {
-    var query = api.require('query');
+    var query = api.require(ac.const.modules.query);
 
     ac.createQuery = function (callback) {
         query.createQuery(function (ret, err) {

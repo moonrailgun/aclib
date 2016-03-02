@@ -35,5 +35,7 @@
         cacheDir:api.cacheDir
     };
 
+    ac.fn = ac.prototype = {};
+
     window.ac = ac;
 })(window);
