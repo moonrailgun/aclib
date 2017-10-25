@@ -14,7 +14,7 @@ module.exports = function (grunt) {
                 '<%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             dist: {
-                src: ['src/**/*.js'],
+                src: ['src/core.js', 'src/**/*.js'],
                 dest: 'dist/<%= pkg.name %> - <%= pkg.version%>.js'
             }
         },
