@@ -2,28 +2,19 @@
  * Created by moonrailgun on 2016-01-16.
  */
 
+const webpackConfig = require('./webpack.config.js');
+
 module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        concat: {
-            options: {
-                stripBanners: true,
-                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-                '<%= grunt.template.today("yyyy-mm-dd") %> */\n'
-            },
-            dist: {
-                src: ['src/core.js', 'src/**/*.js'],
-                dest: 'dist/<%= pkg.name %> - <%= pkg.version%>.js'
-            }
-        },
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build: {
-                src: 'src/**/*.js',
+                src: 'dist/**/*.js',
                 dest: 'dist/<%= pkg.name %> - <%= pkg.version%>.min.js'
             }
         },
@@ -34,13 +25,20 @@ module.exports = function (grunt) {
                     destination: 'doc'
                 }
             }
+        },
+        webpack: {
+            options: {
+                stats: !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+            },
+            prod: webpackConfig,
+            dev: Object.assign({ watch: false }, webpackConfig)
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-jsdoc');
+    grunt.loadNpmTasks('grunt-webpack');
 
     // 默认被执行的任务列表。
-    grunt.registerTask('default', ['uglify', 'concat']);
+    grunt.registerTask('default', ['webpack', 'uglify']);
 };

@@ -1,6 +1,6 @@
 {
   "name": "aclib",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "aclib 是一个对apicloud的js封装库",
   "main": "index.js",
   "scripts": {
@@ -9,11 +9,13 @@
   "author": "moonrailgun",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
     "grunt": "^0.4.5",
-    "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-uglify": "^0.11.1"
-  },
-  "dependencies": {
-    "grunt-jsdoc": "^2.2.0"
+    "grunt-contrib-uglify": "^0.11.1",
+    "grunt-jsdoc": "^2.2.0",
+    "grunt-webpack": "^3.0.2",
+    "webpack": "^3.8.1"
   }
 }
