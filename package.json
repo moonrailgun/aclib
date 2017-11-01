@@ -17,5 +17,8 @@
     "grunt-jsdoc": "^2.2.0",
     "grunt-webpack": "^3.0.2",
     "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "zepto": "^1.2.0"
   }
 }

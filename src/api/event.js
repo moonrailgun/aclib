@@ -12,7 +12,7 @@ module.exports = function initEvent() {
     });
   }
   /** 将任意一个自定义事件广播出去，该事件可在任意页面通过 addEventListener 监听收到。 */
-  this.prototype.emit = function(eventName，data) {
+  this.prototype.emit = function(eventName, data) {
     api.sendEvent({
       name: eventName,
       extra: data

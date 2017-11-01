@@ -1,4 +1,5 @@
 const initApi = require('./api/index.js');
+const initDom = require('./dom/index.js');
 
 /**
  * @constructor
@@ -245,6 +246,7 @@ AcLib.prototype.ready = (func) => {
 }
 
 initApi.call(AcLib);
+initDom.call(AcLib);
 
 module.exports = AcLib;
 window.ac = new AcLib();
