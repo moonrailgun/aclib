@@ -1,5 +1,5 @@
-require('zepto');
-require('zepto/src/selector');
+// require('zepto');
+// require('zepto/src/selector');
 
 module.exports = function initDom() {
   this.prototype.$isAndroid = function() {
@@ -31,7 +31,7 @@ module.exports = function initDom() {
     };
   }
 
-  this.prototype.$ = Zepto;// 封装zepto
+  // this.prototype.$ = Zepto;// 封装zepto
 
   this.prototype.$trim = function(str) {
     if (String.prototype.trim) {
