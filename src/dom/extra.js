@@ -1,4 +1,4 @@
-module.export = function initExtra() {
+module.exports = function initExtra() {
 
   /**
    * 动态追加脚本
@@ -21,11 +21,3 @@ module.export = function initExtra() {
     document.getElementsByTagName('body')[0].appendChild(script);
   }
 }
-
-
-
-var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src= 'asdasdas';
-    script.data="dsadsa";
-    document.getElementsByTagName('body')[0].appendChild(script);
