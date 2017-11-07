@@ -1,5 +1,6 @@
 // require('zepto');
 // require('zepto/src/selector');
+const initExtra = require('./extra');
 
 module.exports = function initDom() {
   this.prototype.$isAndroid = function() {
@@ -587,4 +588,6 @@ module.exports = function initDom() {
       }
     );
   };
+
+  initExtra.call(this);
 }
