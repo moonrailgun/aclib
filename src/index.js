@@ -311,7 +311,7 @@ function AcLib () {
  * @example ac.ready(function() {...});
  */
 AcLib.prototype.ready = (func) => {
-  apiready = () => {
+  window.apiready = () => {
     func();
   }
 }
