@@ -14,6 +14,7 @@ module.exports = function initNetwork() {
         if(params.error) {
           params.error(err);
         }
+        console.log("[network error]:"+JSON.stringify(err));
       }
 
       if(params.complete) {
@@ -23,10 +24,28 @@ module.exports = function initNetwork() {
   }
 
   this.prototype.get = function(url, data, success, error) {
+    var _queryStr = '';
+    if(typeof data === 'object') {
+      var _dl = [];
+      for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+          _dl.push(key+"="+JSON.stringify(data[key]));
+        }
+      }
+      _queryStr = _dl.join('&');
+    }
+
+    if(_queryStr) {
+      if(url.indexOf('?') === -1) {
+        url += '?' + _queryStr;
+      }else {
+        url += '&' + _queryStr;
+      }
+    }
+
     api.ajax({
       url,
       method: 'get',
-      data,
     }, function(ret, err) {
       if (ret) {
         if(success) {
@@ -36,7 +55,7 @@ module.exports = function initNetwork() {
         if(error) {
           error(err);
         }
-        console.error(err);
+        console.log("[network error]:"+JSON.stringify(err));
       }
     })
   }
@@ -45,7 +64,9 @@ module.exports = function initNetwork() {
     api.ajax({
       url,
       method: 'post',
-      data,
+      data: {
+        values: data
+      },
     }, function(ret, err) {
       if (ret) {
         if(success) {
@@ -55,7 +76,7 @@ module.exports = function initNetwork() {
         if(error) {
           error(err);
         }
-        console.error(err);
+        console.error(JSON.stringify(err));
       }
     })
   }
