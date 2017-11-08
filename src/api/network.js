@@ -1,6 +1,11 @@
 module.exports = function initNetwork() {
   this.prototype.ajax = function(params) {
-    api.ajax({params}, function(ret, err) {
+    // process jquery data
+    if(!params.method && params.type && typeof params.type === 'string') {
+      params.method = params.type.toLowerCase();
+    }
+
+    api.ajax(params, function(ret, err) {
       if (ret) {
         if(params.success) {
           params.success(ret);
@@ -12,7 +17,7 @@ module.exports = function initNetwork() {
       }
 
       if(params.complete) {
-        params.complete(ret);
+        params.complete(ret, err);
       }
     })
   }
