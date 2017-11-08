@@ -43,6 +43,11 @@ module.exports = function initNetwork() {
       }
     }
 
+    if(typeof data === 'function') {
+      error = success;
+      success = data;
+    }
+
     api.ajax({
       url,
       method: 'get',
@@ -61,6 +66,11 @@ module.exports = function initNetwork() {
   }
 
   this.prototype.post = function(url, data, success, error) {
+    if(typeof data === 'function') {
+      error = success;
+      success = data;
+    }
+
     api.ajax({
       url,
       method: 'post',
