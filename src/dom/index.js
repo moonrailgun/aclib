@@ -6,6 +6,9 @@ module.exports = function initDom() {
   this.prototype.$isAndroid = function() {
     return (/android/gi).test(navigator.appVersion);
   }
+  this.prototype.$isXiaomi = function() {
+    return (/mi/gi).test(navigator.appVersion);
+  }
   var uzStorage = function() {
     var ls = window.localStorage;
     if (isAndroid) {
@@ -489,6 +492,10 @@ module.exports = function initDom() {
     if (!this.$isElement(el)) {
       console.warn('$api.fixStatusBar Function need el param, el param must be DOM Element');
       return 0;
+    }
+    if(this.$isXiaomi()) {
+      // 小米hack
+      return el.offsetHeight;
     }
     el.style.paddingTop = api.safeArea.top + 'px';
     return el.offsetHeight;
