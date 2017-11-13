@@ -29,7 +29,11 @@ module.exports = function initNetwork() {
       var _dl = [];
       for (var key in data) {
         if (data.hasOwnProperty(key)) {
-          _dl.push(key+"="+JSON.stringify(data[key]));
+          if(typeof data[key] === 'object') {
+            _dl.push(key+"="+JSON.stringify(data[key]));
+          }else {
+            _dl.push(key+"="+data[key]);
+          }
         }
       }
       _queryStr = _dl.join('&');
